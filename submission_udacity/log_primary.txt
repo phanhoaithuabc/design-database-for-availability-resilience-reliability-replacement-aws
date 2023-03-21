@@ -1,0 +1,48 @@
+[ec2-user@ip-10-1-10-217 ~]$ sudo mysql -u admin -p12345678 -h database-1.cmplrtzvelf2.us-east-1.rds.amazonaws.com udacity
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 92
+Server version: 8.0.28 Source distribution
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create table movie(
+    -> id INT NOT NULL AUTO_INCREMENT,
+    -> title VARCHAR(100) NOT NULL,
+    -> desscription VARCHAR(100),
+    -> PRIMARY KEY(id)
+    -> );
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> SHOW TABLES
+    -> ;
++-------------------+
+| Tables_in_udacity |
++-------------------+
+| movie             |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into movie values("Forrest Gump","Forrest Gump is a 1994 American comedy-drama film directed by Robert Zemeckis and written by Eric Roth")
+    -> ;
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into movie values(1,"Forrest Gump","Forrest Gump is a 1994 American comedy-drama film directed by Robert Zemeckis and written by Eric Roth")
+    -> ;
+Query OK, 1 row affected, 1 warning (0.02 sec)
+
+mysql> select * from movie
+    -> ;
++----+--------------+------------------------------------------------------------------------------------------------------+
+| id | title        | desscription                                                                                         |
++----+--------------+------------------------------------------------------------------------------------------------------+
+|  1 | Forrest Gump | Forrest Gump is a 1994 American comedy-drama film directed by Robert Zemeckis and written by Eric Ro |
++----+--------------+------------------------------------------------------------------------------------------------------+
+1 row in set (0.01 sec)
+
+mysql>
